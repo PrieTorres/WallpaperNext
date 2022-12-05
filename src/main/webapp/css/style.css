@@ -5,6 +5,51 @@
 	--fundo-complementar-1: #222222e0; 
 	--main-color: #C89DFF; 
 	--cor-complementar-1: #EBCBFA;
+	--cor-texto-fundo-escuro: #eee;
+}
+.close{
+	position: absolute;
+	right: 20px;
+	color: var(--cor-texto-fundo-escuro);
+	padding: 5px;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 2.4rem;
+}
+.botao-form{
+	padding: 8px;
+	font-size: 1.5rem;
+	font-family: 'Courier New', Courier, monospace;
+	color: var(--cor-texto-fundo-escuro);
+	background-color: #00000000;
+	border: 1px solid var(--cor-texto-fundo-escuro);
+	margin: 18px;
+	/*margin-left: calc(50% - (11 * 1.5rem / 2.5));*/
+}
+.modal-new-pasta{
+	display: flex;
+	position: relative;
+	width: 50vw;
+	min-height: 10vh;
+	background-color: var(--fundo-complementar-1);
+	padding: 12px;
+	left: calc(50% - 25vw);
+}
+.form-new-pasta{
+	color: var(--cor-texto-fundo-escuro);
+	width: 100%;
+	text-align: center;
+}
+.label-input{
+	text-align: left;
+	font-size: 1.7rem;
+	width: 90%;
+	display: block;
+	margin: 10px auto;
+}
+.input-nome-pasta{
+	width: 70%;
+	margin: 0 auto;
+	padding: 8px;
 }
 .wallpaper{
 	max-height: 50%;

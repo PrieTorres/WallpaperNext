@@ -15,8 +15,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.foto.dao.FotoDAO;
 
-@WebServlet("/fotos")
-public class carregarFotos extends HttpServlet {
+@WebServlet("/fotos-user")
+public class carregarFotosUser extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		FotoDAO fotoDAO = new FotoDAO();
@@ -32,7 +32,7 @@ public class carregarFotos extends HttpServlet {
 			req.setAttribute("fotos", listaFotos);
 			req.setAttribute("nome-pasta", nome_pasta);
 			req.setAttribute("FK_pasta", FK_pasta);
-			RequestDispatcher rd = req.getRequestDispatcher("pasta-aberta.jsp");
+			RequestDispatcher rd = req.getRequestDispatcher("pasta-user-aberta.jsp");
 			rd.forward(req, resp);
 			
 		}

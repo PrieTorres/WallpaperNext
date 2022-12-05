@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.List, br.com.pasta.dao.PastaDAO, br.com.WallpaperNext.model.pasta" %>
+<% 
+PastaDAO pastaDAO = new PastaDAO(); 
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +23,7 @@
 				<li><a>Mais aplicativos</a></li>
 				<li><a>Avaliar aplicativo</a></li>
 				<li><a>Remover Propaganda</a></li>
-				<li><a>Sobre nÃ³s</a></li>
+				<li><a>Sobre nós</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -35,6 +41,21 @@
 	</header>
 	<main>
 		<div class="menu-options" onload="">
+		
+			<%
+			List<pasta> listaPastas = (List<pasta>)request.getAttribute("pastas-usuario");
+			for(pasta p : pastaDAO.listarPastasUsuario()) {
+				String url_foto = "fotos-user?FK_pasta="+p.getId()+"&&nome-pasta="+p.getNome();
+			 %>
+			<div class="option" onclick = "
+				window.location.href = '<%= url_foto %>'
+			">
+				<div class="icon-cntainer">
+					<img class="menu-icon" src="img/suas-pastas.png" alt="pastas icon">
+					<p class="text-icon"><%= p.getNome() %></p>
+				</div>
+			</div>
+			<% } %>
 			
 			<div class="option">
 				<div class="icon-cntainer"
@@ -50,13 +71,15 @@
 
 		<div class="modal-new-pasta" style="display: none;">
 			<div class="close" onclick="closeModal('modal-new-pasta')">X</div>
-			<form action="/WallpaperNext_web/criar-pasta" method="post"
+			<form action="criar-pasta" method="post"
 				class="form-new-pasta">
 				<label class="label-input"> Informe o nome da sua pasta: <input
 					type="text" name="name" class="input input-nome-pasta">
-				</label> <label class="label-input"> DescriÃ§Ã£o: <input type="text"
+				</label> <label class="label-input"> Descrição: <input type="text"
 					name="descricao" class="input input-nome-pasta">
 				</label>
+				<input type="text" value="user" name="criador" style="display: none;">
+				<button type="submit" class="botao-form">Criar pasta</button>
 			</form>
 		</div>
 	</main>

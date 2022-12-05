@@ -22,15 +22,13 @@ public class Main {
 		//pastaDAO.save(pasta);
 		//List<pasta> pastas = pastaDAO.listarPastasProntas();
 		
-		for(pasta p : pastaDAO.listarPastasProntas()) {
-			System.out.println("pasta --> "+ p.getNome());
-		}
+		//for(pasta p : pastaDAO.listarPastasProntas()) {
+		//	System.out.println("pasta --> "+ p.getNome());
+		//}
 		
 		/*for(foto f : fotoDAO.listarFotos(1)) {
 			System.out.println("pasta --> "+ f.getLink());
 		}*/
-		
-		
 		
 		
 	}

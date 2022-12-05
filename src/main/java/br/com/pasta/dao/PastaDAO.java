@@ -19,6 +19,8 @@ public class PastaDAO {
 		Connection con = null;
 		PreparedStatement ptsm = null;
 		
+		System.out.println("salvand0...");
+		
 		try {
 			con = ConnectionFactory.createConnectionToMySql();
 			ptsm = (PreparedStatement) con.prepareStatement(sql);
@@ -50,6 +52,53 @@ public class PastaDAO {
 
 	public List<pasta> listarPastasProntas() {
 		String sql = "SELECT * FROM pasta where criador = 'origin';";
+		List<pasta> pastas = new ArrayList<pasta>();
+		
+		Connection con = null;
+		PreparedStatement ptsm = null;
+		ResultSet rset = null;
+		
+		try {
+			con = ConnectionFactory.createConnectionToMySql();
+			ptsm = (PreparedStatement) con.prepareStatement(sql);
+			
+			rset = ptsm.executeQuery();
+			
+			while(rset.next()) {
+				pasta pasta = new pasta();
+				
+				pasta.setId(rset.getInt("id"));
+				pasta.setCriador(rset.getString("criador"));
+				pasta.setDescricao(rset.getString("descricao"));
+				pasta.setNome(rset.getString("nome"));
+				
+				pastas.add(pasta);
+			}
+			
+		} catch (Exception e){
+			System.out.println("erro"+ e);
+			e.printStackTrace();
+		} finally {
+			try {
+				if(con != null) {
+					con.close();
+				}
+				if(ptsm != null) {
+					ptsm.close();
+				}
+				if(rset!=null) {
+					rset.close();
+				}
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return pastas;
+	}
+	
+	public List<pasta> listarTodasPastas() {
+		String sql = "SELECT * FROM pasta;";
 		List<pasta> pastas = new ArrayList<pasta>();
 		
 		Connection con = null;
